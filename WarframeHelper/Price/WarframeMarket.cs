@@ -14,13 +14,12 @@ namespace WarframeHelper.Price
 
         public async Task<WFMarketItem> CheckPrice(string Name)
         {
+            return null;
         }
     }
 
     internal class WFMarketItem
     {
-        public double
-
         public int closed_price { get; set; }
         public int min_price { get; set; }
         public double avg_price { get; set; }

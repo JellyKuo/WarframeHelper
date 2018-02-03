@@ -47,6 +47,10 @@ namespace WarframeHelper
 
             if (warframe.prime_health != null)
             {
+                NexusStack.Visibility = Visibility.Collapsed;
+                NexusProgress.Visibility = Visibility.Visible;
+                WfMarketStack.Visibility = Visibility.Collapsed;
+                WfMarketProgress.Visibility = Visibility.Visible;
                 PriceGBox.Visibility = Visibility.Visible;
                 GetPrice(warframe.name);
             }
@@ -137,6 +141,8 @@ namespace WarframeHelper
             var Data = await checker.GetPriceAsync(PriceCheckName);
 
             NexusStack.Children.Clear();
+            NexusProgress.Visibility = Visibility.Collapsed;
+            NexusStack.Visibility = Visibility.Visible;
             for (int i = 0; i < Data.NexusPrice.Length; i++)
             {
                 var nameTb = new TextBlock
@@ -147,16 +153,16 @@ namespace WarframeHelper
                 };
                 var medTb = new TextBlock
                 {
-                    Text = "Med: " + Data.NexusPrice[i].median.ToString()
+                    Text = "Med: " + Data.NexusPrice[i].median
                 };
                 var avgTb = new TextBlock
                 {
-                    Text = "Avg: " + Math.Round(Data.NexusPrice[i].avg, 2).ToString(),
+                    Text = "Avg: " + Math.Round(Data.NexusPrice[i].avg, 2),
                     HorizontalAlignment = HorizontalAlignment.Right
                 };
                 var rangeTb = new TextBlock
                 {
-                    Text = "Range: " + Data.NexusPrice[i].min.ToString() + "~" + Data.NexusPrice[i].max.ToString()
+                    Text = "Range: " + Data.NexusPrice[i].min + "~" + Data.NexusPrice[i].max
                 };
                 Grid.SetColumnSpan(nameTb, 2);
                 Grid.SetRow(medTb, 1);
