@@ -1,0 +1,107 @@
+﻿<Window x:Class="WarframeHelper.WeaponWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WarframeHelper"
+        mc:Ignorable="d"
+
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="16"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+
+         Title="WeaponWindow" Width="425" Opacity="0.95" AllowsTransparency="True" WindowStyle="None" Topmost="True" SizeToContent="Height">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <materialDesign:Card Padding="5" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="NameTxt" Text="Name" FontSize="42" />
+                <TextBlock x:Name="TypeTxt" Margin="0" TextWrapping="Wrap" Text="Type" VerticalAlignment="Bottom" FontSize="16" Grid.Column="1" HorizontalAlignment="Right" />
+                <TextBlock x:Name="SubtypeTxt" Margin="0" TextWrapping="Wrap" Text="Subtype" VerticalAlignment="Top" FontSize="16" Grid.Column="1" HorizontalAlignment="Right" Grid.ColumnSpan="2" />
+            </Grid>
+        </materialDesign:Card>
+        <Grid Grid.Row="1" Margin="15,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush x:Name="Img" Opacity="0.4" Stretch="Uniform" />
+            </Grid.Background>
+            <GroupBox x:Name="AttrGBox" Header="Attributes" Margin="0"  VerticalAlignment="Top">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel x:Name="MeleeStack" Grid.Column="0" Visibility="Collapsed">
+                        <TextBlock x:Name="SlideTxt" TextWrapping="Wrap" Text="Slide: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="JumpTxt" TextWrapping="Wrap" Text="Jump: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="WallTxt" TextWrapping="Wrap" Text="Wall: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="SpeedTxt" TextWrapping="Wrap" Text="Speed: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="ChannelingTxt" TextWrapping="Wrap" Text="Channeling: " Margin="0,0,0,2" />
+                    </StackPanel>
+                    <StackPanel x:Name="PrimaryStack" Grid.Column="0" Visibility="Visible">
+                        <TextBlock x:Name="TriggerTxt" TextWrapping="Wrap" Text="Trigger: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="ProjectileTxt" TextWrapping="Wrap" Text="Projectile: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="RateTxt" TextWrapping="Wrap" Text="Rate: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="AccuracyTxt" TextWrapping="Wrap" Text="Accuracy: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="MagazineTxt" TextWrapping="Wrap" Text="Magazine: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="AmmoTxt" TextWrapping="Wrap" Text="Ammo: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="ReloadTxt" TextWrapping="Wrap" Text="Reload: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="FlightTxt" TextWrapping="Wrap" Text="Flight: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="NoiseTxt" TextWrapping="Wrap" Text="Noise: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="RivenDispositionTxt" TextWrapping="Wrap" Text="Riven Disposition: " Margin="0,0,0,2" />
+                    </StackPanel>
+                    <StackPanel x:Name="CommonStack" Grid.Column="1">
+                        <TextBlock x:Name="DamageTxt" TextWrapping="Wrap" Text="Damage: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="ImpactTxt" TextWrapping="Wrap" Text="Impact: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="PunctureTxt" TextWrapping="Wrap" Text="Puncture: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="SlashTxt" TextWrapping="Wrap" Text="Slash: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="CritChanceTxt" TextWrapping="Wrap" Text="Crit Chance: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="CritMultiTxt" TextWrapping="Wrap" Text="Crit Multiplier: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="StatusChanceTxt" TextWrapping="Wrap" Text="Status Chance: " Margin="0,0,0,2" />
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+            <GroupBox  x:Name="PriceGBox" Header="Price" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10" materialDesign:ColorZoneAssist.Mode="PrimaryLight">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:Card Padding="2" Margin="2">
+                        <Grid>
+                            <TextBlock Text="NexusStats" HorizontalAlignment="Center" FontSize="18" />
+                        </Grid>
+                    </materialDesign:Card>
+                    <StackPanel x:Name="NexusStack" Grid.Column="0" Grid.Row="1">
+                    </StackPanel>
+                    <materialDesign:Card Padding="2" Margin="2" Grid.Column="1">
+                        <Grid>
+                            <TextBlock Text="WarframeMarket" HorizontalAlignment="Center" FontSize="18" />
+                        </Grid>
+                    </materialDesign:Card>
+                    <StackPanel x:Name="WfMarketStack" Grid.Column="1" Grid.Row="1">
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>
