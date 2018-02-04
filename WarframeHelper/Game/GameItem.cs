@@ -15,20 +15,36 @@ namespace WarframeHelper.Game
             var warframes = Warframe.Parse(@"Data\warframes.json");
             foreach (var warframe in warframes)
             {
-                GameItem item = new GameItem();
-                item.name = warframe.name;
-                item.item = warframe;
-                item.type = ItemType.Warframe;
+                GameItem item = new GameItem
+                {
+                    name = warframe.name,
+                    item = warframe,
+                    type = ItemType.Warframe
+                };
                 items.Add(item);
             }
 
             var weapons = Weapon.Parse(@"Data\weapons.json");
             foreach (var weapon in weapons)
             {
-                GameItem item = new GameItem();
-                item.name = weapon.name;
-                item.item = weapon;
-                item.type = ItemType.Weapon;
+                GameItem item = new GameItem
+                {
+                    name = weapon.name,
+                    item = weapon,
+                    type = ItemType.Weapon
+                };
+                items.Add(item);
+            }
+
+            var arcanes = Arcane.Parse(@"Data\arcanes.json");
+            foreach (var arcane in arcanes)
+            {
+                GameItem item = new GameItem()
+                {
+                    name = arcane.name,
+                    item = arcane,
+                    type = ItemType.Arcane
+                };
                 items.Add(item);
             }
 
@@ -40,5 +56,5 @@ namespace WarframeHelper.Game
         public ItemType type { get; set; }
     }
 
-    public enum ItemType { Warframe, Weapon,Arcane }
+    public enum ItemType { Warframe, Weapon, Arcane }
 }

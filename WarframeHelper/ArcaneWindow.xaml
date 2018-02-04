@@ -5,8 +5,103 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarframeHelper"
         mc:Ignorable="d"
-        Title="ArcaneWindow" Height="300" Width="300">
+
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="16"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+
+         Title="WeaponWindow" Width="425" Opacity="0.95" AllowsTransparency="True" WindowStyle="None" Topmost="True" SizeToContent="Height">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <materialDesign:Card Padding="5" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="NameTxt" Text="Name" FontSize="42" />
+                <TextBlock x:Name="TypeTxt" Margin="0" TextWrapping="Wrap" Text="Type" VerticalAlignment="Bottom" FontSize="16" Grid.Column="1" HorizontalAlignment="Right" />
+            </Grid>
+        </materialDesign:Card>
+        <Grid Grid.Row="1" Margin="15,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush x:Name="Img" Opacity="0.4" Stretch="Uniform" />
+            </Grid.Background>
+            <GroupBox x:Name="AttrGBox" Header="Attributes" Margin="0"  VerticalAlignment="Top">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel x:Name="AttrStack" Grid.Column="0" Visibility="Visible">
+                        <TextBlock x:Name="RarityTxt" TextWrapping="Wrap" Text="Rarity: " Margin="0,0,0,2" />
+                        <TextBlock x:Name="LocationTxt" TextWrapping="Wrap" Text="Location: " Margin="0,0,0,2" />
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+            <GroupBox x:Name="EffectGBox" Header="Effect" Grid.Row="1" Margin="0,10,0,0"  VerticalAlignment="Top" materialDesign:ColorZoneAssist.Mode="Accent">
+                <TextBlock x:Name="EffectTxt" TextWrapping="Wrap" Margin="0" />
+            </GroupBox>
+            <GroupBox  x:Name="PriceGBox" Header="Price" Grid.Row="2" Margin="0,10" materialDesign:ColorZoneAssist.Mode="PrimaryLight">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:Card Padding="2" Margin="2">
+                        <Grid>
+                            <TextBlock Text="NexusStats" HorizontalAlignment="Center" FontSize="18" />
+                        </Grid>
+                    </materialDesign:Card>
+                    <ProgressBar
+                            x:Name="NexusProgress"
+                            Margin="12,12,12,12"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsIndeterminate="True"
+                            Style="{StaticResource MaterialDesignCircularProgressBar}"
+                            Value="0"
+                            Grid.Column="0" Grid.Row="1"
+                            Visibility="Visible" />
+                    <StackPanel x:Name="NexusStack" Grid.Column="0" Grid.Row="1" Visibility="Collapsed">
+                    </StackPanel>
+
+                    <materialDesign:Card Padding="2" Margin="2" Grid.Row="0" Grid.Column="1">
+                        <Grid>
+                            <TextBlock Text="WarframeMarket" HorizontalAlignment="Center" FontSize="18" />
+                        </Grid>
+                    </materialDesign:Card>
+                    <ProgressBar
+                        x:Name="WfMarketProgress"
+                            Margin="12,12,12,12"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsIndeterminate="True"
+                            Style="{StaticResource MaterialDesignCircularProgressBar}"
+                            Value="0"
+                            Grid.Column="1" Grid.Row="1"
+                        Visibility="Visible" />
+
+                    <StackPanel x:Name="WfMarketStack" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </Grid>
     </Grid>
 </Window>

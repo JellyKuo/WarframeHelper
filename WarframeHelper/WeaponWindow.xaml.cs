@@ -95,6 +95,10 @@ namespace WarframeHelper
 
             if (weapon.name.Contains("Prime"))
             {
+                NexusStack.Visibility = Visibility.Collapsed;
+                NexusProgress.Visibility = Visibility.Visible;
+                WfMarketStack.Visibility = Visibility.Collapsed;
+                WfMarketProgress.Visibility = Visibility.Visible;
                 PriceGBox.Visibility = Visibility.Visible;
                 GetPrice(weapon.name);
             }

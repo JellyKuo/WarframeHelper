@@ -90,6 +90,7 @@
     <Compile Include="ArcaneWindow.xaml.cs">
       <DependentUpon>ArcaneWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game\Arcane.cs" />
     <Compile Include="Price\NexusStats.cs" />
     <Compile Include="Price\PriceApi.cs" />
     <Compile Include="Price\PriceChecker.cs" />
@@ -159,6 +160,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\arcanes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Data\warframes.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

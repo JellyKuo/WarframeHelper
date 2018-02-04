@@ -36,7 +36,11 @@ namespace WarframeHelper.Price
 
                 var wmarketPC = new PriceData.PriceComponent();
                 double wmTwoDayMax = 0, wmTwoDayMin = 0, wmTwoDayAvg = 0, wmTwoDayMed = 0;
-                var MPart = await wmarket.CheckPrice(Name + " " + item.name);
+                WfMarketStatistics MPart;
+                if (NItem.components.Length == 1)
+                    MPart = await wmarket.CheckPrice(Name);
+                else
+                    MPart = await wmarket.CheckPrice(Name + " " + item.name);
                 foreach (var wmData in MPart.twoDays)
                 {
                     wmTwoDayMax += wmData.max_price;

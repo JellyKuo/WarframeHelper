@@ -23,6 +23,7 @@ namespace WarframeHelper
         private TextBlock[] SugTxts;
         private WarframeWindow wfWindow;
         private WeaponWindow wpWindow;
+        private ArcaneWindow acWindow;
 
         public SearchWindow()
         {
@@ -108,6 +109,7 @@ namespace WarframeHelper
                                 wfWindow.UpdateData(ref warframe);
                             wfWindow.Show();
                             break;
+
                         case ItemType.Weapon:
                             var weapon = (Weapon)MatchedItems[SugIndex].item;
                             if (wpWindow == null)
@@ -118,6 +120,12 @@ namespace WarframeHelper
                             break;
 
                         case ItemType.Arcane:
+                            var arcane = (Arcane)MatchedItems[SugIndex].item;
+                            if (acWindow == null)
+                                acWindow = new ArcaneWindow(ref arcane);
+                            else
+                                acWindow.UpdateData(ref arcane);
+                            acWindow.Show();
                             break;
 
                         default:
