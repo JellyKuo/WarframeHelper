@@ -77,7 +77,7 @@ namespace WarframeHelper
 
             if (warframe.prime_health != null)
             {
-                if (warframe.prime_health != "" && warframe.prime_health != null)
+                if (!string.IsNullOrEmpty(warframe.prime_health))
                 {
                     PHealthTxt.Text = "Health: " + warframe.prime_health;
                     PHealthTxt.Foreground = Brushes.LightPink;
@@ -85,7 +85,7 @@ namespace WarframeHelper
                 else
                     PHealthTxt.Text = HealthTxt.Text;
 
-                if (warframe.prime_shield != "" && warframe.prime_shield != null)
+                if (!string.IsNullOrEmpty(warframe.prime_shield))
                 {
                     PShieldTxt.Text = "Shield: " + warframe.prime_shield;
                     PShieldTxt.Foreground = Brushes.LightPink;
@@ -93,7 +93,7 @@ namespace WarframeHelper
                 else
                     PShieldTxt.Text = ShieldTxt.Text;
 
-                if (warframe.prime_armor != "" && warframe.prime_armor != null)
+                if (!string.IsNullOrEmpty(warframe.prime_armor))
                 {
                     PArmorTxt.Text = "Armor: " + warframe.prime_armor;
                     PArmorTxt.Foreground = Brushes.LightPink;
@@ -101,7 +101,7 @@ namespace WarframeHelper
                 else
                     PArmorTxt.Text = ArmorTxt.Text;
 
-                if (warframe.prime_power != "" && warframe.prime_power != null)
+                if (!string.IsNullOrEmpty(warframe.prime_power))
                 {
                     PPowerTxt.Text = "Power: " + warframe.prime_power;
                     PPowerTxt.Foreground = Brushes.LightPink;
@@ -109,7 +109,7 @@ namespace WarframeHelper
                 else
                     PPowerTxt.Text = PowerTxt.Text;
 
-                if (warframe.prime_speed != "" && warframe.prime_speed != null)
+                if (!string.IsNullOrEmpty(warframe.prime_speed))
                 {
                     PSpeedTxt.Text = "Speed: " + warframe.prime_speed;
                     PSpeedTxt.Foreground = Brushes.LightPink;
@@ -117,7 +117,7 @@ namespace WarframeHelper
                 else
                     PSpeedTxt.Text = SpeedTxt.Text;
 
-                if (warframe.prime_conclave != "" && warframe.prime_conclave != null)
+                if (!string.IsNullOrEmpty(warframe.prime_conclave))
                 {
                     PConclaveTxt.Text = "Conclave: " + warframe.prime_conclave;
                     PConclaveTxt.Foreground = Brushes.LightPink;
@@ -191,10 +191,56 @@ namespace WarframeHelper
                 NexusStack.Children.Add(card);
             }
 
+            WfMarketProgress.Visibility = Visibility.Collapsed;
+            WfMarketStack.Visibility = Visibility.Visible;
             WfMarketStack.Children.Clear();
-            //for (int i = 0; i < Data.WfMarketPrice.Length; i++)
-            //{
-            //}
+            for (int i = 0; i < Data.WfMarketPrice.Length; i++)
+            {
+                var nameTb = new TextBlock
+                {
+                    FontSize = 20,
+                    Text = Data.WfMarketPrice[i].name,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+                var medTb = new TextBlock
+                {
+                    Text = "Med: " + Math.Round(Data.WfMarketPrice[i].median, 0)
+                };
+                var avgTb = new TextBlock
+                {
+                    Text = "Avg: " + Math.Round(Data.WfMarketPrice[i].avg, 2),
+                    HorizontalAlignment = HorizontalAlignment.Right
+                };
+                var rangeTb = new TextBlock
+                {
+                    Text = "Range: " + Math.Round(Data.WfMarketPrice[i].min, 0) + "~" + Math.Round(Data.WfMarketPrice[i].max, 0)
+                };
+                Grid.SetColumnSpan(nameTb, 2);
+                Grid.SetRow(medTb, 1);
+                Grid.SetRow(avgTb, 1);
+                Grid.SetColumn(avgTb, 1);
+                Grid.SetRow(rangeTb, 2);
+                Grid.SetColumnSpan(rangeTb, 2);
+
+                var grid = new Grid();
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+
+                grid.Children.Add(nameTb);
+                grid.Children.Add(medTb);
+                grid.Children.Add(avgTb);
+                grid.Children.Add(rangeTb);
+                var card = new MaterialDesignThemes.Wpf.Card()
+                {
+                    Padding = new Thickness(4),
+                    Margin = new Thickness(2)
+                };
+                card.Content = grid;
+                WfMarketStack.Children.Add(card);
+            }
         }
     }
 }

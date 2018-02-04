@@ -26,16 +26,35 @@ namespace WarframeHelper.Price
             var MList = new List<PriceData.PriceComponent>();
             foreach (var item in NItem.components)
             {
-                var pc = new PriceData.PriceComponent();
-                pc.max = item.combined.max.Value;
-                pc.median = item.combined.median.Value;
-                pc.min = item.combined.min.Value;
-                pc.avg = item.combined.avg.Value;
-                pc.name = item.name;
-                NList.Add(pc);
+                var nexusPC = new PriceData.PriceComponent();
+                nexusPC.max = item.combined.max.Value;
+                nexusPC.median = item.combined.median.Value;
+                nexusPC.min = item.combined.min.Value;
+                nexusPC.avg = item.combined.avg.Value;
+                nexusPC.name = item.name;
+                NList.Add(nexusPC);
+
+                var wmarketPC = new PriceData.PriceComponent();
+                double wmTwoDayMax = 0, wmTwoDayMin = 0, wmTwoDayAvg = 0, wmTwoDayMed = 0;
+                var MPart = await wmarket.CheckPrice(Name + " " + item.name);
+                foreach (var wmData in MPart.twoDays)
+                {
+                    wmTwoDayMax += wmData.max_price;
+                    wmTwoDayAvg += wmData.avg_price;
+                    wmTwoDayMed += wmData.median;
+                    wmTwoDayMin += wmData.min_price;
+                }
+
+                wmarketPC.name = item.name;
+                wmarketPC.max = wmTwoDayMax / MPart.twoDays.Length;
+                wmarketPC.avg = wmTwoDayAvg / MPart.twoDays.Length;
+                wmarketPC.median = wmTwoDayMed / MPart.twoDays.Length;
+                wmarketPC.min = wmTwoDayMin / MPart.twoDays.Length;
+
+                MList.Add(wmarketPC);
             }
             Result.NexusPrice = NList.ToArray();
-
+            Result.WfMarketPrice = MList.ToArray();
             return Result;
         }
     }

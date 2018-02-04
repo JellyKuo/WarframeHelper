@@ -91,14 +91,36 @@
                             <TextBlock Text="NexusStats" HorizontalAlignment="Center" FontSize="18" />
                         </Grid>
                     </materialDesign:Card>
-                    <StackPanel x:Name="NexusStack" Grid.Column="0" Grid.Row="1">
+                    <ProgressBar
+                            x:Name="NexusProgress"
+                            Margin="12,12,12,12"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsIndeterminate="True"
+                            Style="{StaticResource MaterialDesignCircularProgressBar}"
+                            Value="0"
+                            Grid.Column="0" Grid.Row="1"
+                            Visibility="Visible" />
+                    <StackPanel x:Name="NexusStack" Grid.Column="0" Grid.Row="1" Visibility="Collapsed">
                     </StackPanel>
-                    <materialDesign:Card Padding="2" Margin="2" Grid.Column="1">
+
+                    <materialDesign:Card Padding="2" Margin="2" Grid.Row="0" Grid.Column="1">
                         <Grid>
                             <TextBlock Text="WarframeMarket" HorizontalAlignment="Center" FontSize="18" />
                         </Grid>
                     </materialDesign:Card>
-                    <StackPanel x:Name="WfMarketStack" Grid.Column="1" Grid.Row="1">
+                    <ProgressBar
+                        x:Name="WfMarketProgress"
+                            Margin="12,12,12,12"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsIndeterminate="True"
+                            Style="{StaticResource MaterialDesignCircularProgressBar}"
+                            Value="0"
+                            Grid.Column="1" Grid.Row="1"
+                        Visibility="Visible" />
+
+                    <StackPanel x:Name="WfMarketStack" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
                     </StackPanel>
                 </Grid>
             </GroupBox>

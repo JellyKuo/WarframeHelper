@@ -109,6 +109,8 @@ namespace WarframeHelper
             var Data = await checker.GetPriceAsync(Name);
 
             NexusStack.Children.Clear();
+            NexusProgress.Visibility = Visibility.Collapsed;
+            NexusStack.Visibility = Visibility.Visible;
             for (int i = 0; i < Data.NexusPrice.Length; i++)
             {
                 var nameTb = new TextBlock
@@ -157,10 +159,56 @@ namespace WarframeHelper
                 NexusStack.Children.Add(card);
             }
 
+            WfMarketProgress.Visibility = Visibility.Collapsed;
+            WfMarketStack.Visibility = Visibility.Visible;
             WfMarketStack.Children.Clear();
-            //for (int i = 0; i < Data.WfMarketPrice.Length; i++)
-            //{
-            //}
+            for (int i = 0; i < Data.WfMarketPrice.Length; i++)
+            {
+                var nameTb = new TextBlock
+                {
+                    FontSize = 20,
+                    Text = Data.WfMarketPrice[i].name,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+                var medTb = new TextBlock
+                {
+                    Text = "Med: " + Math.Round(Data.WfMarketPrice[i].median, 0)
+                };
+                var avgTb = new TextBlock
+                {
+                    Text = "Avg: " + Math.Round(Data.WfMarketPrice[i].avg, 2),
+                    HorizontalAlignment = HorizontalAlignment.Right
+                };
+                var rangeTb = new TextBlock
+                {
+                    Text = "Range: " + Math.Round(Data.WfMarketPrice[i].min, 0) + "~" + Math.Round(Data.WfMarketPrice[i].max, 0)
+                };
+                Grid.SetColumnSpan(nameTb, 2);
+                Grid.SetRow(medTb, 1);
+                Grid.SetRow(avgTb, 1);
+                Grid.SetColumn(avgTb, 1);
+                Grid.SetRow(rangeTb, 2);
+                Grid.SetColumnSpan(rangeTb, 2);
+
+                var grid = new Grid();
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+
+                grid.Children.Add(nameTb);
+                grid.Children.Add(medTb);
+                grid.Children.Add(avgTb);
+                grid.Children.Add(rangeTb);
+                var card = new MaterialDesignThemes.Wpf.Card()
+                {
+                    Padding = new Thickness(4),
+                    Margin = new Thickness(2)
+                };
+                card.Content = grid;
+                WfMarketStack.Children.Add(card);
+            }
         }
     }
 }
