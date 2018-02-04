@@ -1,19 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.IO;
-using Newtonsoft.Json;
-using System.Windows.Media.Imaging;
 using System.Net;
+using System.Windows.Media.Imaging;
 
 namespace WarframeHelper
 {
-    class ImageProvider
+    internal class ImageProvider
     {
-        List<CachedImage> ImgList;
+        private List<CachedImage> ImgList;
 
         public ImageProvider()
         {
@@ -31,11 +27,11 @@ namespace WarframeHelper
         {
             foreach (var Img in ImgList)
             {
-                if(Img.Url == url)
+                if (Img.Url == url)
                 {
                     var bitmap = new BitmapImage();
                     bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(@".\Cached\"+Img.Filename,UriKind.Relative);
+                    bitmap.UriSource = new Uri(@".\Cached\" + Img.Filename, UriKind.Relative);
                     bitmap.EndInit();
 
                     return bitmap;
@@ -71,7 +67,6 @@ namespace WarframeHelper
                 response.StatusCode == HttpStatusCode.Redirect) &&
                 response.ContentType.StartsWith("image", StringComparison.OrdinalIgnoreCase))
             {
-
                 // if the remote file was found, download oit
                 using (Stream inputStream = response.GetResponseStream())
                 using (Stream outputStream = new FileStream(fileName, FileMode.Create))
@@ -86,10 +81,9 @@ namespace WarframeHelper
                 }
             }
         }
-
     }
 
-    class CachedImage
+    internal class CachedImage
     {
         public string Url { get; set; }
         public string Filename { get; set; }

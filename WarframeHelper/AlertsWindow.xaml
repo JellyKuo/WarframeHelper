@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarframeHelper"
         mc:Ignorable="d"
-        
+
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
          TextElement.FontWeight="Regular"
@@ -14,9 +14,8 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"
-        
+
         Height="300" Width="300" AllowsTransparency="True" WindowStyle="None" Opacity="0.75">
     <Grid>
-        
     </Grid>
 </Window>

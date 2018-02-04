@@ -31,7 +31,7 @@
         public string channeling { get; set; }
 
         public string flight { get; set; }
-        public string  trigger { get; set; }
+        public string trigger { get; set; }
         public string projectile { get; set; }
         public string rate { get; set; }
         public string noise { get; set; }
@@ -40,8 +40,5 @@
         public string ammo { get; set; }
         public string reload { get; set; }
         public string riven_disposition { get; set; }
-
-
-
     }
 }

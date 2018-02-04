@@ -1,6 +1,6 @@
 ﻿namespace WarframeHelper.Game
 {
-     public class Warframe
+    public class Warframe
     {
         public static Warframe[] Parse(string Path)
         {

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Net.Http;
-using System.Net;
-using System.IO;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace WarframeHelper.Price
 {
