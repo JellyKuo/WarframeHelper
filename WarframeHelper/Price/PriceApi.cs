@@ -18,11 +18,15 @@ namespace WarframeHelper.Price
                     ApiUrl = (string)Properties.Settings.Default["WarframeMarketApi"] + @"/v1/items/{0}/statistics";
                     break;
 
+                case Apis.WarframeStatus:
+                    ApiUrl = (string)Properties.Settings.Default["WarframeStatusApi"] + @"/pricecheck/find";
+                    break;
+
                 default:
                     throw new InvalidOperationException("Selected Api does not confront with PriceApi parent class");
             }
         }
     }
 
-    internal enum Apis { NexusStats, WarframeMarket }
+    internal enum Apis { NexusStats, WarframeMarket, WarframeStatus }
 }
